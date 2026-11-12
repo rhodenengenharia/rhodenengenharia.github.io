@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rhoden Engenharia · Painel de Projetos</title>
+</head>
+<body>
+<div id="gpc" style="font-family:system-ui,sans-serif;color:#667;text-align:center;padding:60px 20px">Carregando o painel...</div>
+<script>
+(function () {
+  var U = 'https://script.google.com/macros/s/AKfycbxM_4NutbveNiPzCuLt-OScGd2fj4EWtAQ2jOyBQYiTnDC9EPkAeP_FQ17-afPx0hdj/exec';
+  fetch(U + '?html=1', { credentials: 'omit' })
+    .then(function (r) { return r.text(); })
+    .then(function (h) {
+      h = h.replace('<head>', '<head><script>window.GP_API="' + U + '"<\/script>');
+      document.open(); document.write(h); document.close();
+    })
+    .catch(function () { document.getElementById('gpc').textContent = 'Não foi possível carregar o painel. Recarregue a página.'; });
+})();
+</script>
+</body>
+</html>
